@@ -1,0 +1,29 @@
+---
+- name: Load SSH Public Key 
+  get_url: url={{ do_ssh_key }} dest={{ do_saved_ssh_key }}
+
+- name: Ensure SSH Key Exists at DigitalOcean
+  digital_ocean: >
+    state=present
+    command=ssh
+    name=roots_provisioner
+    ssh_pub_key={{ lookup('file', '{{ do_saved_ssh_key }}' ) }}
+    api_token={{ do_api_token }}
+  register: roots_provisioner
+
+- name: Ensure Droplet Exists
+  digital_ocean: >
+    state=present
+    command=droplet
+    name={{ item.key }}
+    unique_name=yes
+    size_id={{ item.value.do_size }}
+    region_id={{ item.value.do_region }}
+    image_id={{ item.value.do_image }}
+    ssh_key_ids={{ roots_provisioner.ssh_key.id }}
+    api_token={{ do_api_token }}
+  with_dict: droplets
+  register: new_droplets
+
+- debug: msg="IP is {{ item.droplet.ip_address }}"
+  with_items: new_droplets.results

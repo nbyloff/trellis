@@ -1,2 +1,11 @@
 mysql_root_password: "{{ vault_mysql_root_password }}" # Define this variable in group_vars/staging/vault.yml
 sudoer_passwords: "{{ vault_sudoer_passwords }}" # Define this variable in group_vars/staging/vault.yml
+
+do_api_token: "{{ vault_do_key }}"
+do_ssh_key: https://github.com/username.keys
+do_saved_ssh_key: ~/.ssh/do_id_rsa.pub
+droplets:
+  web-1:
+    do_size: 512mb
+    do_region: nyc2
+    do_image: ubuntu-14-04-x64

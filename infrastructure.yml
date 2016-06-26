@@ -1,0 +1,9 @@
+---
+- name: "Create server infrastructure on digitalocean.com"
+
+  hosts: digital_ocean
+
+  roles:
+    - digitalocean
+
+  

@@ -1,5 +1,6 @@
 # Documentation: https://roots.io/trellis/docs/vault/
 vault_mysql_root_password: stagingpw
+vault_do_key: digitaloceanapikey
 
 # Documentation: https://roots.io/trellis/docs/security/
 vault_sudoer_passwords:

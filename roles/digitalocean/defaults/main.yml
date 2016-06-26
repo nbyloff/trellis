@@ -1,0 +1,4 @@
+---
+do_api_token: "{{ vault_do_key }}"
+ssh_key: ~/.ssh/id_rsa.pub
+saved_ssh_key: ~/.ssh/do_id_rsa.pub
