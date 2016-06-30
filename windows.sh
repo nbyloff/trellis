@@ -31,12 +31,22 @@ fi
 
 # Install Ansible and its dependencies if not installed.
 if [ ! -f /usr/bin/ansible ]; then
-  echo "Adding Ansible repository..."
-  sudo apt-add-repository -y ppa:ansible/ansible
-  echo "Updating system..."
-  sudo apt-get -y update
-  echo "Installing Ansible..."
-  sudo apt-get -y install ansible
+  # echo "Adding Ansible repository..."
+  # sudo apt-add-repository -y ppa:ansible/ansible
+  # echo "Updating system..."
+  # sudo apt-get -y update
+  # echo "Installing Ansible..."
+  # sudo apt-get -y install ansible
+  echo "Installing pip..."
+  sudo apt-get -y install python-pip
+  echo "Installing Ansible with pip..."
+  sudo pip install ansible=='2.0.2.0'
+  echo "Installing markupsafe with pip..."
+  sudo pip install markupsafe
+  echo "Installing dopy with pip..."
+  # current version is 0.3.7
+  sudo pip install dopy 
+  # sudo pip install 'dopy>=0.3.5,<=0.3.5'
 fi
 
 if [ ! -d ${ANSIBLE_PATH}/vendor ]; then

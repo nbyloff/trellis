@@ -1,11 +1,13 @@
 # Add each host to the [staging] group and to a "type" group such as [web] or [db].
 # List each machine only once per [group], even if it will host multiple sites.
 
-[staging]
 localhost ansible_connection=local
 
+[staging]
+web1
+
 [web]
-localhost ansible_connection=local
+web1
 
 [digital_ocean]
 localhost ansible_connection=local

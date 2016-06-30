@@ -1,6 +1,6 @@
 ---
 - name: "Create server infrastructure on digitalocean.com"
-
+  gather_facts: no
   hosts: digital_ocean
 
   roles:
